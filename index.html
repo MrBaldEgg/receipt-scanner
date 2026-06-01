@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt-scanner</title>
+<link rel="manifest" href="manifest.json">
+<style>
+    body {font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 1rem;}
+    video, canvas {width: 100%; border: 1px solid #ccc; margin-bottom: 1rem}
+    button {padding: 0.5rem 1rem; margin: 0.5rem 0;}
+    #results {white-space: pre-wrap; background: #f0f0f0; padding: 1rem;}
+</style>
+</head>
+<body>
+    <h1>Receipt-scanner</h1>
+    <section id="scanner">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" style="display: none"></canvas>
+        <button id="capture-btn">SCAN</button>
+    </section>
+    <section id="output">
+        <h2>Распознанно</h2>
+        <div id="results">Место для результата</div>
+    </section>
+    <section id="history">
+        <h2>История</h2>
+        <button id="refresh-history-btn">Обновить</button>
+        <div id="history-list"></div>
+    </section>
+    <script src="./libs/jsQR.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+</body>
+</html>
