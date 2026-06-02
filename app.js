@@ -55,7 +55,7 @@ captureBtn.addEventListener('click', async () => {
         
         if (barcodes.length > 0) {
             resultHTML += '<h3>Найденные QR:</h3><ul>';
-            barcodes.foreach((barcode,index) =>{
+            barcodes.forEach((barcode,index) =>{
                 resultHTML += `<li><strong>Код ${index + 1}: </strong> ${barcode.rawValue}</li>`;
             });
             resultHTML += '</ul>';
@@ -102,9 +102,7 @@ if (!useBarcodeDetectorAPI) {
     console.warn('BarcodeDetector API не найден. Будет использован jsQR.');
     window.addEventListener('DOMContentLoaded', () => {
         const warning = document.createElement('p');
-        warning.style.color = '#856404';
-        warning.style.backgroundColor = '#fff3cd';
-        warning.style.padding = '0.5rem';
+        warning.id = 'warning';
         warning.textContent = 'BarcodeDetector API не поддерживается браузером. Для распознавания QR-кодов используется встроенная библиотека jsQR.';
         const output = document.getElementById('output');
         if (output) {
@@ -243,6 +241,7 @@ async function displayHistory() {
         console.error('Ошибка загрузки истории: ', err);
         historyList.textContent = 'Не удалось загрузить историю';
     }
+    console.log('История обновлена')
 }
 
 document.getElementById('refresh-history-btn').addEventListener('click', displayHistory);
